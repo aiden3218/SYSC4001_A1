@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
     std::string ENDIO = "END_IO";
     int total_time = 0;
     int time = 0;
+    std::pair<std::string, int> myPair = std::make_pair(execution, total_time);
     FILE *executionFile = fopen("executionFile.txt", "w");
     /******************************************************************/
 
@@ -34,20 +35,13 @@ int main(int argc, char** argv) {
         /******************ADD YOUR SIMULATION CODE HERE*************************/
 
         if (activity == CPU) {
-            fprintf(executionFile, "%i, %i, CPU execution\n", total_time, duration_intr);
-            //execution = ("%i, %i, CPU execution\n", total_time, time);
+            execution += std::to_string(total_time) + ", " + std::to_string(duration_intr) + ", CPU execution\n";
             total_time += duration_intr;
         }
         else if (activity == SYSCALL) {
-            fprintf(executionFile, "%i, %i, switch to kernel mode\n", total_time, 1);
-            //execution.append("%i, %i, switch to kernel mode\n", total_time, 1);
-            total_time += 1;
-            fprintf(executionFile, "%i, %i, context saved\n", total_time, 10);
-            //execution.append("%i, %i, context saved\n", total_time, 10);
-            total_time += 10;
-            fprintf(executionFile, "%i, %i, find vector %i in memory position %c\n", total_time, 1, duration_intr, vectors[duration_intr]);
-            //execution.append("%i, %i, find vector %i in memory position %i", total_time, 1, duration_intr, vectors[duration_intr]);
-            total_time += 1;
+            myPair = intr_boilerplate(total_time, duration_intr, 10, vectors);
+            execution += myPair.first;
+            
         }
         else {
 
@@ -61,6 +55,7 @@ int main(int argc, char** argv) {
     fclose(executionFile);
 
     input_file.close();
+
 
     write_output(execution);
 
