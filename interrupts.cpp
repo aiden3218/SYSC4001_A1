@@ -45,10 +45,8 @@ int main(int argc, char** argv) {
             execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr+1]) + ", ISR to call device driver\n";
             total_time += delays[duration_intr+1];
 
-            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr+1]) + ", IRET\n";
+            execution += std::to_string(total_time) + ", " + std::to_string(1) + ", IRET\n";
             total_time += 1;
-
-            
 
             execution += std::to_string(total_time) + ", " + std::to_string(1) + ", switch to user mode\n";
             total_time += 1;
