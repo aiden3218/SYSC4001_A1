@@ -25,7 +25,6 @@ int main(int argc, char** argv) {
     int total_time = 0;
     int time = 0;
     std::pair<std::string, int> myPair = std::make_pair(execution, total_time);
-    FILE *executionFile = fopen("executionFile.txt", "w");
     /******************************************************************/
 
     //parse each line of the input trace file
@@ -41,7 +40,9 @@ int main(int argc, char** argv) {
         else if (activity == SYSCALL) {
             myPair = intr_boilerplate(total_time, duration_intr, 10, vectors);
             execution += myPair.first;
-            
+            total_time = myPair.second;
+
+            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr+1]) + ", call device driver\n";
         }
         else {
 
@@ -51,8 +52,6 @@ int main(int argc, char** argv) {
         /************************************************************************/
 
     }
-
-    fclose(executionFile);
 
     input_file.close();
 

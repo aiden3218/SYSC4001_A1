@@ -3,9 +3,11 @@
 51, 10, context saved
 61, 1, find vector 7 in memory position 0x000E
 62, 1, load address 0X00BD into the PC
-50, 100, CPU execution
-150, 1, switch to kernel mode
-151, 10, context saved
-161, 1, find vector 12 in memory position 0x0018
-162, 1, load address 0X03B9 into the PC
-150, 20, CPU execution
+63, 1000, call device driver
+63, 100, CPU execution
+163, 1, switch to kernel mode
+164, 10, context saved
+174, 1, find vector 12 in memory position 0x0018
+175, 1, load address 0X03B9 into the PC
+176, 636, call device driver
+176, 20, CPU execution
