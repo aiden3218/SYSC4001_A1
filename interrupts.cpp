@@ -57,6 +57,9 @@ int main(int argc, char** argv) {
             execution += myPair.first;
             total_time = myPair.second;
 
+            execution += std::to_string(total_time) + ", " + std::to_string(1) + ", switch to user mode\n";
+            total_time += 1;
+
             execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr+1]) + ", END_IO execution\n";
 
         }
