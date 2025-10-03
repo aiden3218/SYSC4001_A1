@@ -42,8 +42,8 @@ int main(int argc, char** argv) {
             execution += myPair.first;
             total_time = myPair.second;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr+1]) + ", ISR to call device driver\n";
-            total_time += delays[duration_intr+1];
+            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr]) + ", ISR to call device driver\n";
+            total_time += delays[duration_intr];
 
             execution += std::to_string(total_time) + ", " + std::to_string(1) + ", IRET\n";
             total_time += 1;
@@ -51,17 +51,22 @@ int main(int argc, char** argv) {
             execution += std::to_string(total_time) + ", " + std::to_string(1) + ", switch to user mode\n";
             total_time += 1;
 
+            execution += std::to_string(total_time) + ", " + std::to_string(10) + ", context restored\n";
+            total_time += 10;
+
         }
         else if (activity == ENDIO){
             myPair = intr_boilerplate(total_time, duration_intr, 10, vectors);
             execution += myPair.first;
             total_time = myPair.second;
 
+            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr]) + ", END_IO execution\n";
+
             execution += std::to_string(total_time) + ", " + std::to_string(1) + ", switch to user mode\n";
             total_time += 1;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr+1]) + ", END_IO execution\n";
-
+            execution += std::to_string(total_time) + ", " + std::to_string(10) + ", context restored\n";
+            total_time += 10;
         }
 
 

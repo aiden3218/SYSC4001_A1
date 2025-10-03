@@ -1,0 +1,69 @@
+0, 100, CPU burst
+100, 1, switch to kernel mode
+101, 20, context saved
+121, 1, find vector 7 in memory position 0x000E
+122, 1, load address 0X00BD into the PC
+123, 152, ISR to call device driver
+275, 1, IRET
+276, 1, switch to user mode
+277, 20, context restored
+297, 26, CPU burst
+323, 1, switch to kernel mode
+324, 20, context saved
+344, 1, find vector 7 in memory position 0x000E
+345, 1, load address 0X00BD into the PC
+346, 152, END_IO execution
+346, 1, switch to user mode
+347, 20, context restored
+367, 72, CPU burst
+439, 1, switch to kernel mode
+440, 20, context saved
+460, 1, find vector 18 in memory position 0x0024
+461, 1, load address 0X060A into the PC
+462, 123, ISR to call device driver
+585, 1, IRET
+586, 1, switch to user mode
+587, 20, context restored
+607, 52, CPU burst
+659, 1, switch to kernel mode
+660, 20, context saved
+680, 1, find vector 18 in memory position 0x0024
+681, 1, load address 0X060A into the PC
+682, 123, END_IO execution
+682, 1, switch to user mode
+683, 20, context restored
+703, 88, CPU burst
+791, 1, switch to kernel mode
+792, 20, context saved
+812, 1, find vector 14 in memory position 0x001C
+813, 1, load address 0X0165 into the PC
+814, 456, ISR to call device driver
+1270, 1, IRET
+1271, 1, switch to user mode
+1272, 20, context restored
+1292, 32, CPU burst
+1324, 1, switch to kernel mode
+1325, 20, context saved
+1345, 1, find vector 14 in memory position 0x001C
+1346, 1, load address 0X0165 into the PC
+1347, 456, END_IO execution
+1347, 1, switch to user mode
+1348, 20, context restored
+1368, 91, CPU burst
+1459, 1, switch to kernel mode
+1460, 20, context saved
+1480, 1, find vector 6 in memory position 0x000C
+1481, 1, load address 0X0639 into the PC
+1482, 265, ISR to call device driver
+1747, 1, IRET
+1748, 1, switch to user mode
+1749, 20, context restored
+1769, 26, CPU burst
+1795, 1, switch to kernel mode
+1796, 20, context saved
+1816, 1, find vector 6 in memory position 0x000C
+1817, 1, load address 0X0639 into the PC
+1818, 265, END_IO execution
+1818, 1, switch to user mode
+1819, 20, context restored
+1839, 72, CPU burst
