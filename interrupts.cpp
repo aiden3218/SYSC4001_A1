@@ -38,35 +38,30 @@ int main(int argc, char** argv) {
             total_time += duration_intr;
         }
         else if (activity == SYSCALL) {
-            myPair = intr_boilerplate(total_time, duration_intr, 10, vectors);
+            myPair = intr_boilerplate(total_time, duration_intr, 40, vectors);
             execution += myPair.first;
             total_time = myPair.second;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr]) + ", ISR to call device driver\n";
-            total_time += delays[duration_intr];
+            execution += std::to_string(total_time) + ", " + std::to_string(40) + ", SYSCALL: run the ISR (device driver)\n";
+            total_time += 40;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(1) + ", IRET\n";
-            total_time += 1;
+            execution += std::to_string(total_time) + ", " + std::to_string(20) + ", transfer data from device to memory\n";
+            total_time += 20;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(1) + ", switch to user mode\n";
-            total_time += 1;
-
-            execution += std::to_string(total_time) + ", " + std::to_string(10) + ", context restored\n";
-            total_time += 10;
+            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr]-60) + ", Check for errors\n";
+            total_time += (delays[duration_intr])-60;
 
         }
         else if (activity == ENDIO){
-            myPair = intr_boilerplate(total_time, duration_intr, 10, vectors);
+            myPair = intr_boilerplate(total_time, duration_intr, 40, vectors);
             execution += myPair.first;
             total_time = myPair.second;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr]) + ", END_IO execution\n";
+            execution += std::to_string(total_time) + ", " + std::to_string(40) + ", END_IO: run the ISR\n";
+            total_time += 40;
 
-            execution += std::to_string(total_time) + ", " + std::to_string(1) + ", switch to user mode\n";
-            total_time += 1;
-
-            execution += std::to_string(total_time) + ", " + std::to_string(10) + ", context restored\n";
-            total_time += 10;
+            execution += std::to_string(total_time) + ", " + std::to_string(delays[duration_intr]-40) + ", check device status\n";
+            total_time += delays[duration_intr]-40;
         }
 
 
